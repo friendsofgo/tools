@@ -17,14 +17,10 @@ const (
 	PortScanTimeout = 60 * time.Second
 )
 
-func isValidPort(port int) bool {
-	return MinValidPortNumber <= port && port <= MaxValidPortNumber
-}
-
 // ScanPort does a Dial check of the given port at the given address
 // through the given protocol. It returns an ScanResult with the info.
 func ScanPort(protocol Protocol, hostname string, port int) (ScanResult, error) {
-	if !isValidPort(port) {
+	if !IsValidPort(port) {
 		return ScanResult{}, errors.New("invalid port - out of range")
 	}
 
@@ -41,7 +37,7 @@ func ScanPort(protocol Protocol, hostname string, port int) (ScanResult, error) 
 // ScanPortRange does a concurrent ScanPort call for each port present
 // within the given ports range. It returns a slide of ScanResults with the info.
 func ScanPortRange(protocol Protocol, hostname string, from, to int) (results []ScanResult, err error) {
-	if !isValidPort(from) || !isValidPort(to) {
+	if !IsValidPort(from) || !IsValidPort(to) {
 		return nil, errors.New("invalid port - out of range")
 	}
 
