@@ -88,3 +88,4 @@ Results file:
 - [ ] Set up GoReleaser for binaries generation.
 - [ ] Add unitary & integration coverage.
 - [ ] Use only the root command for the `portscan` tool.
+- [ ] Use other scan techniques for the `portscan` tool.
