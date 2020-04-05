@@ -93,8 +93,8 @@ Does a range scan for each port number of the given range on the given address t
 }
 
 func init() {
-	cmdSingle.PersistentFlags().StringVarP(&resultsOutput, outputFlag, "f", emptyString, "results file (stdin by default)")
-	cmdSingle.PersistentFlags().StringVar(&resultsFormat, formatFlag, tools.Plain.String(), "results format")
+	rootCmd.PersistentFlags().StringVarP(&resultsOutput, outputFlag, "f", emptyString, "results file (stdin by default)")
+	rootCmd.PersistentFlags().StringVar(&resultsFormat, formatFlag, tools.Plain.String(), "results format, allowed: plain, json, yaml")
 
 	rootCmd.AddCommand(cmdSingle)
 	rootCmd.AddCommand(cmdRange)
